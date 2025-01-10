@@ -10,7 +10,7 @@ package main
 import (
 	"fmt"
 	"image"
-	"image/jpeg"
+	_ "image/jpeg"
 	"math"
 	"os"
 )
@@ -70,20 +70,4 @@ func main() {
 		fmt.Println()
 	}
 
-}
-
-// Following is just as a placeholder, ignore for now
-func saveImage(filename string, img image.Image) {
-	file, err := os.Create(filename)
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	err = jpeg.Encode(file, img, &jpeg.Options{Quality: 90})
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Image saved as", filename)
 }
